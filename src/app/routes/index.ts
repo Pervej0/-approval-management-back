@@ -1,14 +1,16 @@
 import express from "express";
+import authRoutes from "../modules/auth/auth.route";
 
 const router = express.Router();
 
 const allRoutes = [
   {
-    route: "",
+    path: "users",
+    route: authRoutes,
   },
 ];
 
-allRoutes.forEach((rt) => router.use("/api", rt?.route));
+allRoutes.forEach((item) => router.use(`/api/v1/${item.path}`, item?.route));
 
 const rootRoute = router;
 export default rootRoute;

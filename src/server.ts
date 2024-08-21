@@ -4,16 +4,16 @@ import "dotenv/config";
 import app from "./app";
 import { MongoClient } from "mongodb";
 import mongoose from "mongoose";
+import config from "./app/config";
 // import config from "./App/config";
 
-const uri = process.env.DATABASE_URL as string;
 let server: Server;
 const main = async () => {
-  await mongoose.connect(uri);
+  await mongoose.connect(config.URI as string);
   console.log("Database Connected successfully");
 
-  server = app.listen(process.env.PORT, () => {
-    console.log("The Server is running on port", process.env.PORT);
+  server = app.listen(config.PORT, () => {
+    console.log("The Server is running on port", config.PORT);
   });
 };
 
