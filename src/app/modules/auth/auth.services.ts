@@ -1,4 +1,6 @@
+import { StatusCodes } from "http-status-codes";
 import config from "../../config";
+import CustomError from "../../errors/customError";
 import userModel from "./auth.model";
 import { TLogin, TRegister } from "./auth.type";
 import { createToken } from "./auth.utils";
@@ -26,8 +28,9 @@ export const createUserDB = async (payload: TRegister) => {
 export const loginDB = async (payload: TLogin) => {
   try {
     const getUser = await userModel.findOne({ email: payload.email }).exec();
+    console.log(getUser, "x");
     if (!getUser) {
-      throw new Error();
+      throw new Error("User does not exist");
     }
 
     const comparePassword = await bcrypt.compare(

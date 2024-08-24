@@ -16,6 +16,9 @@ const globalErrorHandler: ErrorRequestHandler = (
     statusCode = StatusCodes.FORBIDDEN;
     message = err.message;
     error = err.errors;
+  } else if (err instanceof Error) {
+    message = err.message;
+    error = err;
   } else if (err?.code === 11000) {
     message = error.message;
     const errorFields = Object.keys(err.keyValue).map(
