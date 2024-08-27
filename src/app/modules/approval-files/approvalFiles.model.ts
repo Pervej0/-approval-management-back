@@ -33,4 +33,9 @@ const approvalFilesSchema = new Schema<TApprovalFiles>({
   },
 });
 
-export default approvalFilesSchema;
+const approvalFilesModel = mongoose.model<TApprovalFiles>(
+  "approvalFile",
+  approvalFilesSchema
+);
+
+export default approvalFilesModel;
