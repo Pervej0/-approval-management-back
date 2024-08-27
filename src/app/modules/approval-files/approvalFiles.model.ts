@@ -23,6 +23,7 @@ const approvalFilesSchema = new Schema<TApprovalFiles>({
     required: [true, "ManagerId is required"],
   },
   status: {
+    type: String,
     enum: ["pending", "reviewed", "approved", "rejected"],
     required: [true, "Status is required"],
     default: "pending",
