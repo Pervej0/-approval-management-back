@@ -13,5 +13,7 @@ route.post(
   createApprovalFiles
 );
 
+route.get("/");
+
 const approvalLetterRoutes = route;
 export default approvalLetterRoutes;

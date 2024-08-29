@@ -13,3 +13,8 @@ export const createApprovalFilesDB = async (
   const result = await approvalFilesModel.create(payload);
   return result;
 };
+
+export const getAllApprovalDB = async (query: Record<string, unknown>) => {
+  const result = await approvalFilesModel.find();
+  return result;
+};
